@@ -1,17 +1,45 @@
 {
-  "name": "website",
+  "name": "@visiosto/website",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "astro": "astro",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "astro dev",
+    "format": "NODE_OPTIONS=\"--experimental-strip-types\" prettier --write .",
+    "lint": "astro check && NODE_OPTIONS=\"--experimental-strip-types\" eslint . --flag unstable_native_nodejs_ts_config && stylelint \"**/*.{astro,css}\" && prettier --check . && (if command -v uvx >/dev/null 2>&1; then uvx reuse lint; fi)",
+    "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^6.0.8"
+    "astro": "6.0.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.8",
+    "@astrojs/ts-plugin": "1.10.7",
+    "@eslint/js": "10.0.1",
+    "@eslint/json": "1.2.0",
+    "@eslint/markdown": "7.5.1",
+    "@tailwindcss/vite": "4.2.2",
+    "browserslist": "4.28.1",
+    "eslint": "10.1.0",
+    "eslint-plugin-astro": "1.6.0",
+    "globals": "17.4.0",
+    "lightningcss": "1.32.0",
+    "postcss-html": "1.8.1",
+    "prettier": "3.8.1",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-astro-organize-imports": "0.4.11",
+    "prettier-plugin-organize-imports": "4.3.0",
+    "prettier-plugin-packagejson": "3.0.2",
+    "prettier-plugin-tailwindcss": "0.7.2",
+    "stylelint": "17.5.0",
+    "stylelint-config-html": "1.1.0",
+    "stylelint-config-standard": "40.0.0",
+    "tailwindcss": "4.2.2",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.57.2"
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=24.13.0"
   }
 }
