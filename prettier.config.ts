@@ -12,6 +12,14 @@ const config: Config = {
     "prettier-plugin-tailwindcss",
     "prettier-plugin-astro-organize-imports",
   ],
+  arrowParens: "always",
+  bracketSpacing: true,
+  printWidth: 80,
+  semi: true,
+  singleQuote: false,
+  tabWidth: 2,
+  trailingComma: "all",
+  useTabs: false,
   tailwindStylesheet: "./src/styles/global.css",
   overrides: [
     {

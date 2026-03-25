@@ -9,6 +9,12 @@ import { browserslistToTargets } from "lightningcss";
 
 // https://astro.build/config
 export default defineConfig({
+  site: import.meta.env.PROD
+    ? "https://www.visiosto.fi"
+    : "http://localhost:4321",
+  trailingSlash: "always",
+  output: "static",
+  compressHTML: import.meta.env.PROD,
   vite: {
     plugins: [tailwindcss()],
     css: {
@@ -22,5 +28,9 @@ export default defineConfig({
     build: {
       cssMinify: "lightningcss",
     },
+  },
+  build: {
+    format: "directory",
+    assets: "_assets",
   },
 });
