@@ -1,0 +1,18 @@
+version = 1
+
+[[annotations]]
+path = [
+  "**/*.astro",
+  "**/*.js",
+  "**/*.mjs",
+  "**/*.ts",
+  "**/.gitignore",
+  "*.json",
+]
+SPDX-FileCopyrightText = "© 2026 Visiosto oy <visiosto@visiosto.fi>"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ["README.md"]
+SPDX-FileCopyrightText = "© 2026 Visiosto oy <visiosto@visiosto.fi>"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
