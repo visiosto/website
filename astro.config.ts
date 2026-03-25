@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
 
@@ -33,4 +33,25 @@ export default defineConfig({
     format: "directory",
     assets: "_assets",
   },
+  fonts: [
+    {
+      provider: fontProviders.local(),
+      name: "MonaSans",
+      cssVariable: "--font-mona-sans",
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/MonaSans-Regular.woff2"],
+            weight: 400,
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/MonaSans-Bold.woff2"],
+            weight: 700,
+            style: "normal",
+          },
+        ],
+      },
+    },
+  ],
 });

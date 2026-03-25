@@ -7,7 +7,8 @@
     "build": "astro build",
     "dev": "astro dev",
     "format": "NODE_OPTIONS=\"--experimental-strip-types\" prettier --write .",
-    "lint": "astro check && NODE_OPTIONS=\"--experimental-strip-types\" eslint . --flag unstable_native_nodejs_ts_config && stylelint \"**/*.{astro,css}\" && prettier --check . && (if command -v uvx >/dev/null 2>&1; then uvx reuse lint; fi)",
+    "lint": "astro check && NODE_OPTIONS=\"--experimental-strip-types\" eslint . --flag unstable_native_nodejs_ts_config && stylelint \"**/*.{astro,css}\" && prettier --check .",
+    "lint:reuse": "uvx reuse lint",
     "preview": "astro preview"
   },
   "dependencies": {

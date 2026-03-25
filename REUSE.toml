@@ -16,3 +16,8 @@ SPDX-License-Identifier = "AGPL-3.0-or-later"
 path = ["README.md"]
 SPDX-FileCopyrightText = "© 2026 Visiosto oy <visiosto@visiosto.fi>"
 SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+[[annotations]]
+path = ["src/assets/fonts/MonaSans*.ttf"]
+SPDX-FileCopyrightText = "2023 GitHub"
+SPDX-License-Identifier = "OFL-1.1"
