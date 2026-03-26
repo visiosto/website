@@ -9,9 +9,69 @@
 @theme {
   --*: initial;
 
-  --color-neutral-50: oklch(0.986% 0.002 67.8deg);
+  --color-stone-50: oklch(98.6% 0.002 67.8deg);
+  --color-stone-900: oklch(21.4% 0.004 43.1deg);
+  --color-stone-950: oklch(14.7% 0.004 49.3deg);
+
+  --color-forest-100: oklch(76.96% 0.1202 150.18deg);
+  /* --color-forest-100: oklch(76.96% 0.1002 150.18deg); */
+  --color-forest-800: oklch(40.66% 0.1202 148.82deg);
+
+  --spacing: 0.25rem;
+
+  --breakpoint-md: 48rem;
+
+  --text-xs: 0.75rem;
+  --text-xs--line-height: calc(1 / 0.75);
+  --text-sm: 0.875rem;
+  --text-sm--line-height: calc(1.25 / 0.875);
+  --text-base: 1rem;
+  --text-base--line-height: calc(1.5 / 1);
+  --text-lg: 1.125rem;
+  --text-lg--line-height: calc(1.75 / 1.125);
+  --text-xl: 1.25rem;
+  --text-xl--line-height: calc(1.75 / 1.25);
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: calc(2 / 1.5);
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: calc(2.25 / 1.875);
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: calc(2.5 / 2.25);
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 1;
+  --text-6xl: 3.75rem;
+  --text-6xl--line-height: 1;
+  --text-7xl: 4.5rem;
+  --text-7xl--line-height: 1;
+  --text-8xl: 6rem;
+  --text-8xl--line-height: 1;
+  --text-9xl: 8rem;
+  --text-9xl--line-height: 1;
+
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
 }
 
 @theme inline {
   --font-sans: var(--font-mona-sans);
+  --font-mono: var(--font-mona-sans-mono);
+}
+
+@utility container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: --spacing(4);
+  padding-left: --spacing(4);
+
+  @media (width >= 48rem) {
+    /* stylelint-disable-next-line no-invalid-position-declaration */
+    max-width: 40rem;
+  }
+
+  @media (width >= 64rem) {
+    /* stylelint-disable-next-line no-invalid-position-declaration */
+    max-width: 48rem;
+  }
 }

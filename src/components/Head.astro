@@ -1,4 +1,8 @@
 ---
+// SPDX-FileCopyrightText: © 2026 Visiosto oy <visiosto@visiosto.fi>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 import { useTranslations } from "@/i18n";
 import locales, {
   defaultLocale,
@@ -8,7 +12,6 @@ import locales, {
 } from "@/locales";
 import { getRoute, getRouteKey } from "@/routes";
 import "@/styles/global.css";
-import { Font } from "astro:assets";
 
 export interface Props {
   canonicalURL?: URL | null;
@@ -111,5 +114,3 @@ function formatCanonicalURL(url: string | URL): string {
         />
       ))
 }
-
-<Font cssVariable="--font-mona-sans" />

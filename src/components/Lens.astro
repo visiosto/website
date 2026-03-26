@@ -1,0 +1,18 @@
+---
+// SPDX-FileCopyrightText: © 2026 Visiosto oy <visiosto@visiosto.fi>
+//
+// SPDX-License-Identifier: LicenseRef-AllRightsReserved
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 1000 1000" role="img" aria-hidden="true">
+  <path
+    d="M500,829.774C317.871,829.774 170.226,682.129 170.226,500C170.226,317.871 317.871,170.226 500,170.226C533.242,170.226 565.314,175.195 595.571,184.344C587.866,197.741 583.437,213.261 583.437,229.824C583.437,280.293 624.35,321.207 674.82,321.207C705.192,321.207 732.088,306.378 748.704,283.578C799.154,341.503 829.774,417.153 829.774,500C829.774,682.129 682.129,829.774 500,829.774ZM500,35.138C243.264,35.138 35.138,243.264 35.138,500C35.138,756.737 243.264,964.862 500,964.862C756.736,964.862 964.862,756.737 964.862,500C964.862,243.264 756.736,35.138 500,35.138Z"
+    style="fill:none;fill-rule:nonzero;stroke:currentcolor;stroke-width:65px;"
+  ></path>
+</svg>

@@ -1,0 +1,86 @@
+---
+// SPDX-FileCopyrightText: © 2026 Visiosto oy <visiosto@visiosto.fi>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+import { useTranslations } from "@/i18n";
+import locales, { defaultLocale, languages, type Locale } from "@/locales";
+import { getRoute, getRouteKey } from "@/routes";
+import Lens from "./Lens.astro";
+
+const currentLocale = Astro.props.errorPage
+  ? "fi"
+  : (Astro.currentLocale as Locale);
+const st = useTranslations("site", currentLocale);
+const ht = useTranslations("header", currentLocale);
+
+const isIndex =
+  (currentLocale === defaultLocale && Astro.url.pathname === "/") ||
+  (currentLocale !== defaultLocale &&
+    Astro.url.pathname === `/${currentLocale}/`);
+
+const nav = ["services", "about"];
+---
+
+<header
+  class="container my-8 flex flex-col items-center justify-center gap-y-8 md:flex-row md:justify-between"
+>
+  {
+    isIndex ? (
+      <h1 class="flex items-center justify-start">
+        <Lens class="mr-1 size-12" />
+        <span class="text-3xl font-black">{st("title")}</span>
+      </h1>
+    ) : (
+      <a
+        class="flex items-center justify-start hover:text-forest-800 dark:hover:text-forest-100"
+        href={getRoute(currentLocale, "/")}
+      >
+        <Lens class="mr-1 size-12" />
+        <span class="text-3xl font-black">{st("title")}</span>
+      </a>
+    )
+  }
+  <div
+    class="flex flex-col items-center justify-end gap-y-8 font-mono md:flex-row md:gap-x-12"
+  >
+    <nav aria-label={ht("nav.label")}>
+      <ul class="flex gap-x-8">
+        {
+          nav.map((route) => (
+            <li>
+              <a
+                class="hover:text-forest-800 hover:underline dark:hover:text-forest-100"
+                href={getRoute(currentLocale, route)}
+              >
+                {ht(`nav.links.${route}`)}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="flex gap-x-1 text-sm">
+      {
+        locales.toReversed().map((locale, i) => (
+          <>
+            {locale === currentLocale ? (
+              <span class="font-bold">{locale.toUpperCase()}</span>
+            ) : (
+              <a
+                class="underline hover:text-forest-800 dark:hover:text-forest-100"
+                href={getRoute(locale, getRouteKey(Astro.url.pathname))}
+                aria-label={
+                  languages.find((lang) => lang.locale === locale)?.menuLabel
+                }
+              >
+                {locale.toUpperCase()}
+              </a>
+            )}
+            {i < locales.length - 1 && <span aria-hidden="true">/</span>}
+          </>
+        ))
+      }
+    </div>
+  </div>
+</header>

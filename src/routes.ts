@@ -7,20 +7,26 @@ import locales, { defaultLocale } from "@/locales";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
 type RoutesDef = {
+  about: string;
   "data-protection": string;
   index: "/";
+  services: string;
 };
 
 type Routes = Record<Locale, RoutesDef>;
 
 const routes: Routes = {
   en: {
+    about: "about",
     "data-protection": "data-protection",
     index: "/",
+    services: "services",
   },
   fi: {
+    about: "meista",
     "data-protection": "tietosuoja",
     index: "/",
+    services: "palvelut",
   },
 };
 

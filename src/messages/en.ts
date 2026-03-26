@@ -3,6 +3,15 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 export default {
+  header: {
+    nav: {
+      label: "Main navigation",
+      links: {
+        services: "Services",
+        about: "About",
+      },
+    },
+  },
   site: {
     description:
       "Visiosto builds accessible, high-quality websites and brands. A digital agency offering lasting solutions and caring service.",

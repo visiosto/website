@@ -17,11 +17,11 @@ export const openGraphLocales: Record<Locale, string> = {
 export const languages: { locale: Locale; menuLabel: string }[] = [
   {
     locale: "en",
-    menuLabel: "in English",
+    menuLabel: "In English",
   },
   {
     locale: "fi",
-    menuLabel: "suomeksi",
+    menuLabel: "Suomeksi",
   },
 ];
 

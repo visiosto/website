@@ -1,6 +1,12 @@
 ---
+// SPDX-FileCopyrightText: © 2026 Visiosto oy <visiosto@visiosto.fi>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 import Head, { type Props as HeadProps } from "@/components/Head.astro";
+import Header from "@/components/Header.astro";
 import { languageCodes, type Locale } from "@/locales";
+import { Font } from "astro:assets";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface Props extends HeadProps {}
@@ -14,8 +20,15 @@ const locale = Astro.props.errorPage ? "fi" : (Astro.currentLocale as Locale);
 <html class="scheme-light dark:scheme-dark" lang={languageCodes[locale]}>
   <head>
     <Head {...head} />
+    <Font cssVariable="--font-mona-sans" />
+    <Font cssVariable="--font-mona-sans-mono" />
   </head>
-  <body class="bg-neutral-50 font-sans">
-    <slot />
+  <body
+    class="bg-stone-50 font-sans text-stone-950 dark:bg-stone-900 dark:text-stone-50"
+  >
+    <Header />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>

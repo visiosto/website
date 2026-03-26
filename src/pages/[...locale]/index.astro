@@ -1,4 +1,8 @@
 ---
+// SPDX-FileCopyrightText: © 2026 Visiosto oy <visiosto@visiosto.fi>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 import { useTranslations } from "@/i18n";
 import MainLayout from "@/layouts/MainLayout.astro";
 import locales, { defaultLocale, type Locale } from "@/locales";
@@ -27,5 +31,43 @@ const t = useTranslations("site", locale);
 ---
 
 <MainLayout rawTitle={`${t("title")} - ${t("subtitle")}`}>
-  <p>front page</p>
+  <div class="container mt-12 space-y-4">
+    <h2 class="font-sans text-2xl font-black">{t("subtitle")}</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate,
+      eros nec luctus egestas, eros sapien lobortis ipsum, vitae pellentesque
+      nulla est sit amet arcu. Donec euismod, massa et imperdiet efficitur, quam
+      justo vulputate lectus, sed rutrum leo ex et sem. Suspendisse leo leo,
+      ultricies vitae tincidunt a, vulputate eget odio. Cras erat turpis,
+      condimentum ac lacinia ac, scelerisque id justo. Nullam risus arcu,
+      imperdiet ac ultricies eget, aliquet sed dui. Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit. Sed lacus nunc, rhoncus quis purus nec,
+      congue pharetra sem. Pellentesque neque elit, mollis vel euismod ac,
+      scelerisque at dui. Nunc eu viverra justo. Nulla tincidunt eget felis vel
+      elementum. Phasellus leo sem, ornare sed nisi eu, dapibus lacinia nunc.
+    </p>
+
+    <p>
+      Praesent ut lacinia est. Cras consectetur commodo rutrum. Duis a mi
+      consectetur, luctus nulla sed, dapibus tellus. Praesent gravida sem urna,
+      eu faucibus lorem egestas condimentum. Aliquam erat volutpat. Suspendisse
+      commodo finibus massa. Duis leo lectus, lobortis sed efficitur nec, luctus
+      ac mauris. Maecenas quis egestas sem. Nulla facilisi. Nulla volutpat felis
+      at felis vestibulum auctor. Suspendisse quis faucibus nunc, quis lobortis
+      eros. Aliquam tristique in ex ut malesuada. Sed vel porttitor felis, ut
+      cursus ex.
+    </p>
+
+    <p>
+      Integer leo lorem, auctor vel porttitor eu, sagittis vitae libero.
+      Praesent at mauris non odio eleifend faucibus. Morbi consectetur diam at
+      massa tempus, ac cursus leo rhoncus. Nam elementum ullamcorper tristique.
+      Maecenas et felis pulvinar, tempor eros sit amet, sagittis turpis. Nam
+      interdum viverra dui, in interdum nulla. Vivamus ultrices ligula vel
+      imperdiet finibus. Morbi at nisl malesuada, mattis mi vel, consectetur
+      velit. Morbi non ullamcorper tortor. Vivamus fermentum lacus vitae elit
+      ultrices viverra. Maecenas faucibus lacus nec diam maximus, at ornare
+      libero tempus.
+    </p>
+  </div>
 </MainLayout>
