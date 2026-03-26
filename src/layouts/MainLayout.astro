@@ -1,0 +1,21 @@
+---
+import Head, { type Props as HeadProps } from "@/components/Head.astro";
+import { languageCodes, type Locale } from "@/locales";
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+interface Props extends HeadProps {}
+
+const head = Astro.props;
+
+const locale = Astro.props.errorPage ? "fi" : (Astro.currentLocale as Locale);
+---
+
+<!doctype html>
+<html class="scheme-light dark:scheme-dark" lang={languageCodes[locale]}>
+  <head>
+    <Head {...head} />
+  </head>
+  <body class="bg-neutral-50 font-sans">
+    <slot />
+  </body>
+</html>

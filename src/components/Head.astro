@@ -1,0 +1,115 @@
+---
+import { useTranslations } from "@/i18n";
+import locales, {
+  defaultLocale,
+  languageCodes,
+  openGraphLocales,
+  type Locale,
+} from "@/locales";
+import { getRoute, getRouteKey } from "@/routes";
+import "@/styles/global.css";
+import { Font } from "astro:assets";
+
+export interface Props {
+  canonicalURL?: URL | null;
+  description?: string;
+  errorPage?: boolean;
+  rawTitle?: string;
+  title?: string;
+}
+
+const locale = Astro.props.errorPage ? "fi" : (Astro.currentLocale as Locale);
+const t = useTranslations("site", locale);
+
+const {
+  canonicalURL = new URL(Astro.request.url, Astro.site),
+  description = t("description"),
+  errorPage,
+  rawTitle,
+} = Astro.props;
+
+const title =
+  rawTitle ?? [Astro.props.title, t("title")].filter(Boolean).join(" - ");
+
+/**
+ * Enforce some standard canonical URL formatting across the site.
+ */
+function formatCanonicalURL(url: string | URL): string {
+  const path = url.toString();
+  const hasQueryParams = path.includes("?");
+  // If there are query params, make sure the URL has no trailing slash
+  if (hasQueryParams) {
+    path.replace(/\/?$/, "");
+  }
+  // otherwise, canonical URL always has a trailing slash
+  return path.replace(/\/?$/, hasQueryParams ? "" : "/");
+}
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+
+<!-- TODO: Favicons -->
+
+{
+  canonicalURL && (
+    <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
+  )
+}
+{
+  !errorPage &&
+    locales.map((locale) => (
+      <link
+        rel="alternate"
+        href={formatCanonicalURL(
+          new URL(
+            getRoute(locale, getRouteKey(Astro.url.pathname)),
+            Astro.site,
+          ),
+        )}
+        hreflang={languageCodes[locale]}
+      />
+    ))
+}
+{
+  !errorPage && (
+    <link
+      rel="alternate"
+      href={formatCanonicalURL(
+        new URL(
+          getRoute(defaultLocale, getRouteKey(Astro.url.pathname)),
+          Astro.site,
+        ),
+      )}
+      hreflang="x-default"
+    />
+  )
+}
+
+<meta property="og:title" content={rawTitle ?? Astro.props.title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+{
+  canonicalURL && (
+    <meta property="og:url" content={formatCanonicalURL(canonicalURL)} />
+  )
+}
+<meta property="og:site_name" content={t("title")} />
+<!-- TODO: OG image -->
+{!errorPage && <meta property="og:locale" content={openGraphLocales[locale]} />}
+{
+  !errorPage &&
+    locales
+      .filter((l) => l !== locale)
+      .map((locale) => (
+        <meta
+          property="og:locale:alternate"
+          content={openGraphLocales[locale]}
+        />
+      ))
+}
+
+<Font cssVariable="--font-mona-sans" />

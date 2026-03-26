@@ -1,0 +1,31 @@
+---
+import { useTranslations } from "@/i18n";
+import MainLayout from "@/layouts/MainLayout.astro";
+import locales, { defaultLocale, type Locale } from "@/locales";
+import type { GetStaticPathsResult } from "astro";
+
+export function getStaticPaths(): GetStaticPathsResult {
+  let paths = [];
+
+  for (const locale of locales) {
+    if (locale === defaultLocale) {
+      paths.push({
+        params: { locale: undefined },
+      });
+    } else {
+      paths.push({
+        params: { locale },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const locale = Astro.currentLocale as Locale;
+const t = useTranslations("site", locale);
+---
+
+<MainLayout rawTitle={`${t("title")} - ${t("subtitle")}`}>
+  <p>front page</p>
+</MainLayout>

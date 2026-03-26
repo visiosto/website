@@ -3,9 +3,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import tailwindcss from "@tailwindcss/vite";
+import type { Locales } from "astro";
 import { defineConfig, fontProviders } from "astro/config";
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
+import locales, { defaultLocale } from "./src/locales";
 
 // https://astro.build/config
 export default defineConfig({
@@ -54,4 +56,12 @@ export default defineConfig({
       },
     },
   ],
+  i18n: {
+    locales: locales as unknown as Locales,
+    // @ts-expect-error Astro's typing here is confusing.
+    defaultLocale: defaultLocale,
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });

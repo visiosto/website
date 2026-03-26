@@ -21,6 +21,8 @@ export default {
         ],
       },
     ],
+    "custom-property-pattern": null,
+    "custom-property-empty-line-before": null,
     "import-notation": null,
   },
 } satisfies Config;

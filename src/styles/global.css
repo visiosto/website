@@ -6,6 +6,12 @@
 
 @import "tailwindcss";
 
+@theme {
+  --*: initial;
+
+  --color-neutral-50: oklch(0.986% 0.002 67.8deg);
+}
+
 @theme inline {
   --font-sans: var(--font-mona-sans);
 }
