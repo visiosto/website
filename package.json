@@ -24,7 +24,7 @@
     "@tailwindcss/vite": "4.2.2",
     "browserslist": "4.28.1",
     "eslint": "10.1.0",
-    "eslint-plugin-astro": "1.6.0",
+    "eslint-plugin-astro": "1.7.0",
     "globals": "17.4.0",
     "lightningcss": "1.32.0",
     "postcss-html": "1.8.1",
